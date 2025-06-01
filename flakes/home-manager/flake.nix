@@ -7,7 +7,6 @@ inputs = {
 outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-   git
 ];
 };
 };
