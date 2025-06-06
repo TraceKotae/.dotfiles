@@ -13,6 +13,8 @@ outputs = { self, nixpkgs, ... }: {
    mangohud
    obsidian
    git
+   brave
+   alacritty
    ];
   #install flatpak
   services.flatpak.enable = true;
