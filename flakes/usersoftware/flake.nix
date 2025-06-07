@@ -15,6 +15,7 @@ outputs = { self, nixpkgs, ... }: {
    git
    brave
    alacritty
+   kitty
    ];
   #install flatpak
   services.flatpak.enable = true;
