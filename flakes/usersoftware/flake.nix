@@ -16,6 +16,7 @@ outputs = { self, nixpkgs, ... }: {
    brave
    alacritty
    kitty
+   gitkraken
    ];
   #install flatpak
   services.flatpak.enable = true;
