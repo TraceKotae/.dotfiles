@@ -11,8 +11,7 @@ outputs = { self, nixpkgs, ... }: {
 	./flatpak.nix
 	./fonts.nix
 	./network.nix
-	./stylix
-	./thunar
+	./stylix.nix
 	];
   environment.systemPackages = with pkgs; [
    kitty

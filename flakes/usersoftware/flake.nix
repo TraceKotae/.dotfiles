@@ -18,6 +18,7 @@ outputs = { self, nixpkgs, ... }: {
    kitty
    gitkraken
    gedit
+   ffmpegthumbnailer #thunar thumbnail generator
    ];
   programs = {
   steam.enable = true;
