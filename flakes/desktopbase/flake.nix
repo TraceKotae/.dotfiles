@@ -10,7 +10,7 @@ outputs = { self, nixpkgs, ... }: {
  ./boot.nix
 	./flatpak.nix
 	./fonts.nix
-	./network.nix
+#./network.nix
 #	./stylix.nix
 	];
   environment.systemPackages = with pkgs; [
