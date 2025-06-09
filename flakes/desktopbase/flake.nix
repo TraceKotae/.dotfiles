@@ -3,13 +3,13 @@ description = "Wayland Base Desktop Configuration";
 
 inputs = {
  nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-  imports = [
-#    ./boot.nix
-	./flatpak.nix
-	];
 };
 outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
+ imports = [
+#    ./boot.nix
+	./flatpak.nix
+	];
   environment.systemPackages = with pkgs; [
    kitty
    alacritty   
