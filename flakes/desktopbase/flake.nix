@@ -7,7 +7,7 @@ inputs = {
 outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
  imports = [
-#    ./boot.nix
+ ./boot.nix
 	./flatpak.nix
 	./fonts.nix
 	./network.nix
