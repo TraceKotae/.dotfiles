@@ -24,8 +24,8 @@ services.pipewire = {
  pulse.enable = true; };
 services.gnome.gnome-keyring.enable = true;
 services.fstrim.enable = true;
-services.sensors.enable = true;
-  
+boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors  
+
 # Mount Harddrives
 #  fileSystems."/mnt/4TBintSSD" = {
 #    device = "/dev/disk/by-uuid/ebc9f941-239d-4bfa-8e53-e7e18f786350"; # REPLACE with your actual UUID
