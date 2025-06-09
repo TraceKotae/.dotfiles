@@ -24,6 +24,7 @@ services.pipewire = {
  pulse.enable = true; };
 services.gnome.gnome-keyring.enable = true;
 services.fstrim.enable = true;
+services.sensors.enable = true;
   
 # Mount Harddrives
 #  fileSystems."/mnt/4TBintSSD" = {
