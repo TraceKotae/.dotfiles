@@ -18,13 +18,12 @@ outputs = { self, nixpkgs, ... }: {
    kitty
    gitkraken
    ];
-  #install flatpak
-  services.flatpak.enable = true;
-  #install steam
-  programs.steam.enable = true;
-  programs.gamemode.enable = true;
-  programs.coolercontrol.enable = true;
-  programs.coolercontrol.nvidiaSupport = true;
+  programs = {
+  steam.enable = true;
+  gamemode.enable = true;
+  coolercontrol.enable = true;
+  coolercontrol.nvidiaSupport = true;
+  };
   };
  };
 }
