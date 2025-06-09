@@ -15,6 +15,7 @@ xfce.thunar
 wireplumber
 seahorse
 appimage-run
+lm_sensors
 ];
 hardware.bluetooth.enable = true;
 hardware.bluetooth.powerOnBoot = true;
