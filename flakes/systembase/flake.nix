@@ -8,11 +8,13 @@ outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
 git
+wget
 blueman
 pavucontrol
 xfce.thunar   
 wireplumber
 seahorse
+appimage-run
 ];
 hardware.bluetooth.enable = true;
 hardware.bluetooth.powerOnBoot = true;
@@ -20,6 +22,7 @@ services.pipewire = {
  enable = true;
  pulse.enable = true; };
 services.gnome.gnome-keyring.enable = true;
+services.fstrim.enable = true;
   
 # Mount Harddrives
 #  fileSystems."/mnt/4TBintSSD" = {

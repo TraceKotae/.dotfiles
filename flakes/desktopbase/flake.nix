@@ -9,12 +9,18 @@ outputs = { self, nixpkgs, ... }: {
  imports = [
 #    ./boot.nix
 	./flatpak.nix
+	./fonts.nix
+	./network.nix
+	./stylix
+	./thunar
 	];
   environment.systemPackages = with pkgs; [
    kitty
    alacritty   
    rofi-wayland
    swww
+   cliphist
+   brightnessctl
   ];
   programs.hyprland = {
   enable = true;

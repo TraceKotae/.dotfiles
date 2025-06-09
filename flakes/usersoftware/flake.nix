@@ -17,6 +17,7 @@ outputs = { self, nixpkgs, ... }: {
    alacritty
    kitty
    gitkraken
+   gedit
    ];
   programs = {
   steam.enable = true;
