@@ -4,9 +4,8 @@
  home.username = "daniel";
  home.homeDirectory = "/home/daniel";
  home.packages = with pkgs; [ 
-  brave
-  vencord
 ];
+programs.brave.enable = true;
 programs.kitty.enable = true;
 programs.rofi.enable = true;
  home.file.".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink ./Assets/Hyprland/hyprland.conf;
