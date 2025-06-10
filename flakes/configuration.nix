@@ -101,4 +101,24 @@
 
 # ENABLE FLAKES
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+# THEMING
+stylix.cursor.package = pkgs.bibate-cursors;
+stylix.cursor.name = "Bibata-Modern-Ice;
+stylix.image = ~/.dotfiles/flakes/Assets/Wallpapers/SakuratreeLarge.png;
+stylix.fonts = {
+	monospace = {
+		package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+		name = "JetBrainsMono Nerd Font Mono";
+		};
+		
+	sansSerif = {
+		package = pkgs.dejavu_fonts;
+		name = "DejaVu Sans";
+		};
+	serif = {
+		package = pkgs.dejavu_fonts;
+		name = "DejaVu Serif";
+		};
+	};
 }
