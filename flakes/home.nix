@@ -5,7 +5,7 @@
  home.homeDirectory = "/home/daniel";
  home.packages = with pkgs; [ 
   brave
-#  rofi-wayland
+  vencord
 ];
 programs.kitty.enable = true;
 programs.rofi.enable = true;
