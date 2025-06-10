@@ -18,6 +18,7 @@ programs.rofi.enable = true;
  home.file.".config/hypr/UserConfigs/Permissions.conf".source = config.lib.file.mkOutOfStoreSymlink ./Assets/Hyprland/Permissions.conf;
  home.file.".config/hypr/UserConfigs/Workspaces.conf".source = config.lib.file.mkOutOfStoreSymlink ./Assets/Hyprland/Workspaces.conf;
  home.file.".config/hypr/initialstart.sh".source = config.lib.file.mkOutOfStoreSymlink ./Assets/Hyprland/initialstart.sh;
+ home.file.".config/hypr/UserConfigs/WindowRules.conf".source = config.lib.file.mkOutOfStoreSymlink ./Assets/Hyprland/WindowRules.conf;
  #home.file.".config/kitty/kitty.conf".source = config.lib.file.mkOutOfStoreSymlink ./Assets/kitty/kitty.conf;
  #home.file.".config/kitty/kitty-themes/Japanesque.conf".source = config.lib.file.mkOutOfStoreSymlink ./Assets/kitty/kitty-themes/Japanesque.conf;
 # home.file.".config/hypr/start.sh".source = config.lib.file.mkOutOfStoreSymlink ./Assets/Hyprland/start.sh;
