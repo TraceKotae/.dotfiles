@@ -10,6 +10,7 @@ outputs = { self, nixpkgs, ... }: {
     ./boot.nix
 	./flatpak.nix
 	./fonts.nix
+	./stylix.nix
 	];
   environment.systemPackages = with pkgs; [
    kitty
@@ -18,6 +19,7 @@ outputs = { self, nixpkgs, ... }: {
    swww
    cliphist
    brightnessctl
+   waybar
   ];
   programs.hyprland = {
   enable = true;
