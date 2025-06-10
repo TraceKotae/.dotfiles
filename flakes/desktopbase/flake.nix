@@ -8,8 +8,8 @@ outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
  imports = [
     ./boot.nix
-	./flatpak.nix
-	./fonts.nix
+    ./flatpak.nix
+    ./fonts.nix
 	];
   environment.systemPackages = with pkgs; [
    swww
