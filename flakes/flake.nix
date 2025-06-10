@@ -18,13 +18,13 @@ outputs = { self, nixpkgs, stylix, desktopbase, systembase, home-manager, nvidia
    system = "x86_64-linux";
    modules = [
     ./configuration.nix
-	stylix.nixosModules.stylix
+    stylix.nixosModules.stylix
     desktopbase.nixosModules.default
     systembase.nixosModules.default
     nvidia.nixosModules.default
     usersoftware.nixosModules.default
     home-manager.nixosModules.home-manager {
-     home-manager.users.daniel = import ./home.nix;
+    home-manager.users.daniel = import ./home.nix;
      }
     ];
    };

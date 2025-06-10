@@ -103,23 +103,28 @@
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 # THEMING
+stylix.enable = true;
 stylix.cursor.package = pkgs.bibata-cursors;
 stylix.cursor.name = "Bibata-Modern-Ice";
 stylix.cursor.size = 24;
+stylix.polarity = "dark";
+stylix.targets.gtk.enable = true;
+stylix.targets.qt.enable = true;
 stylix.image = ./Assets/Wallpapers/SakuratreeLarge.png;
-stylix.fonts = {
-	monospace = {
-		package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-		name = "JetBrainsMono Nerd Font Mono";
-		};
-		
-	sansSerif = {
-		package = pkgs.dejavu_fonts;
-		name = "DejaVu Sans";
-		};
-	serif = {
-		package = pkgs.dejavu_fonts;
-		name = "DejaVu Serif";
-		};
-	};
+stylix.opacity.applications = 0.9;
+#stylix.fonts = {
+#	monospace = {
+#		package = pkgs.nerdfonts.droid-sans-mono.override {fonts = ["JetBrainsMono"];};
+#		name = "JetBrainsMono Nerd Font Mono";
+#		};
+#		
+#	sansSerif = {
+#		package = pkgs.dejavu_fonts;
+#		name = "DejaVu Sans";
+#		};
+#	serif = {
+#		package = pkgs.dejavu_fonts;
+#		name = "DejaVu Serif";
+#		};
+#	};
 }
