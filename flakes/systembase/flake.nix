@@ -16,6 +16,7 @@ wireplumber
 seahorse
 appimage-run
 lm_sensors
+unzip
 ];
 hardware.bluetooth.enable = true;
 hardware.bluetooth.powerOnBoot = true;
