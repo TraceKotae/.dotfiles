@@ -12,9 +12,6 @@ outputs = { self, nixpkgs, ... }: {
 	./fonts.nix
 	];
   environment.systemPackages = with pkgs; [
-   kitty
-   alacritty   
-   rofi-wayland
    swww
    cliphist
    brightnessctl

@@ -13,9 +13,6 @@ outputs = { self, nixpkgs, ... }: {
    mangohud
    obsidian
    git
-   brave
-   alacritty
-   kitty
    gitkraken
    gedit
    ffmpegthumbnailer #thunar thumbnail generator
