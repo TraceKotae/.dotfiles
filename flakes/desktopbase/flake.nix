@@ -3,9 +3,8 @@ description = "Wayland Base Desktop Configuration";
 
 inputs = {
  nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
- stylix.url = "github:danth/stylix";
 };
-outputs = { self, nixpkgs, ... }@inputs: {
+outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
  imports = [
     ./boot.nix
@@ -28,11 +27,5 @@ outputs = { self, nixpkgs, ... }@inputs: {
  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
  environment.sessionVariables = {NIXOS_OZONE_WL = "1"; };
 };
-nixosConfigurations.default = nixpkgs.lib.nixosSystem {
- specialArgs = {inherit inputs;};};
- modules = [
- ./stylixconfiguraton
- inputs.stylix.nixosModules.stylix
- ];
- };
+};
 }
