@@ -14,6 +14,7 @@ outputs = { self, nixpkgs, ... }: {
     ./greetd.nix
 	];
   environment.systemPackages = with pkgs; [
+   hypridle
    swww
    cliphist
    brightnessctl
