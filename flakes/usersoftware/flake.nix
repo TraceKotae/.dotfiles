@@ -16,6 +16,7 @@ outputs = { self, nixpkgs, ... }: {
    gitkraken
    gedit
    gparted
+   unzip
    ];
   programs = {
   
