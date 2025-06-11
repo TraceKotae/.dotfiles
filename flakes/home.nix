@@ -29,5 +29,7 @@ imports = [
 	./home-swappy.nix
 	./home-swaync.nix
 	./home-waybar.nix
+	./home-hypridle.nix
+	./home-hyprlock.nix
   ];
 }
