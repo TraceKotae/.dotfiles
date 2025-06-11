@@ -11,7 +11,6 @@ git
 wget
 blueman
 pavucontrol
-xfce.thunar   
 wireplumber
 seahorse
 appimage-run
