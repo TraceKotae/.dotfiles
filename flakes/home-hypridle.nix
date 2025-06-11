@@ -12,7 +12,7 @@ services.hypridle.enable = true;
           };
         listener = [
           {
-            timeout = 30;
+            timeout = 600;
             on-timeout = "hyprctl dispatch dpms off";
             on-resume = "hyprctl dispatch dpms on";
           }
