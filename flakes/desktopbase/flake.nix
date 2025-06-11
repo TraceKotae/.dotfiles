@@ -11,6 +11,7 @@ outputs = { self, nixpkgs, ... }: {
     ./flatpak.nix
     ./fonts.nix
 	./thunar.nix
+	./greetd.nix
 	];
   environment.systemPackages = with pkgs; [
    swww
