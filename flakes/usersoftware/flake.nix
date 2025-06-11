@@ -15,6 +15,7 @@ outputs = { self, nixpkgs, ... }: {
    git
    gitkraken
    gedit
+   gparted
    ];
   programs = {
   steam.enable = true;
