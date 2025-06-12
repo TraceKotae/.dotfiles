@@ -7,7 +7,8 @@ inputs = {
 outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-   discord
+ #  discord
+   vesktop
    easyeffects
 #   wineWowPackages.stable
    mangohud
