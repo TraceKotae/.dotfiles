@@ -18,6 +18,7 @@ outputs = { self, nixpkgs, ... }: {
    swww
    cliphist
    brightnessctl
+   swaynotificationcenter
   ];
   programs.hyprland = {
   enable = true;
