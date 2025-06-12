@@ -17,7 +17,8 @@ outputs = { self, nixpkgs, ... }: {
    gitkraken
    gedit
    gparted
-   btrfs-progs
+   	btrfs-progs
+   	ntfs3g 
    unzip
    nextcloud-client
     ];    
