@@ -18,7 +18,6 @@ programs.waybar = {
           "idle_inhibitor"
         ];
         modules-right = [
-          "custom/hyprbindings"
           "custom/notification"
           "custom/exit"
           "battery"
@@ -47,7 +46,7 @@ programs.waybar = {
           max-length = 22;
           separate-outputs = false;
           rewrite = {
-            "" = " 🙈 No Windows? ";
+            "" = " none";
           };
         };
 
@@ -120,12 +119,6 @@ programs.waybar = {
           format = "";
           # exec = "rofi -show drun";
           on-click = "sleep 0.1 && rofi-launcher";
-        };
-
-        "custom/hyprbindings" = {
-          tooltip = false;
-          format = "󱕴";
-          on-click = "sleep 0.1 && list-keybinds";
         };
 
         "idle_inhibitor" = {

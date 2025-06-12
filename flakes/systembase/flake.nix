@@ -28,17 +28,25 @@ services.fstrim.enable = true;
 boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors  
 
 # Mount Harddrives
-#  fileSystems."/mnt/4TBintSSD" = {
-#    device = "/dev/disk/by-uuid/ebc9f941-239d-4bfa-8e53-e7e18f786350"; # REPLACE with your actual UUID
-#    fsType = "btrfs"; # REPLACE with your filesystem type (e.g., "btrfs", "xfs")
-#    options = [
-#          "defaults"
-#          "nofail"
-#          "uid=1000" # Replace with your user's UID
-#          "gid=100"  # Replace with your user's GID (usually "users" group)
-#          # "compress-force=zstd" # Add other options as needed, e.g., "compress-force=zstd" for btrfs
-#        ];
-# };
+# create dirs and assign ownership
+
+  systemd.tmpfiles.rules = [
+    "d /mnt/4TBintSSD 0755 daniel users -"
+    "d /mnt/4TBextHDD 0755 daniel users -"
+  ];
+  
+   # ... your fileSystems mounts for the Btrfs drives (from previous instructions) ...
+  fileSystems."/mnt/4TBintSSD" = {
+    device = "/dev/disk/by-uuid/86f159de-d249-492d-bc11-7ec0be37f2b8"; # Replace with your actual UUID
+    fsType = "btrfs";
+    options = [ "defaults" ];
+  };
+
+  fileSystems."/mnt/4TBextHDD" = {
+    device = "/dev/disk/by-uuid/82ee1fc8-549b-4cb5-a60b-ceab8aa73edd"; # Replace with your actual UUID
+    fsType = "btrfs";
+    options = [ "defaults" "compress=zstd" ];
+  };
 };
 };
 }
