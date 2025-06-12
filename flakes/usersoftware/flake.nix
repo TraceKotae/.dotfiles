@@ -17,6 +17,7 @@ outputs = { self, nixpkgs, ... }: {
    gedit
    gparted
    unzip
+   nextcloud-client
     ];    
   programs = {
   steam = {

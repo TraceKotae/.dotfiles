@@ -12,17 +12,18 @@ wget
 blueman
 pavucontrol
 wireplumber
-seahorse
+#seahorse
 appimage-run
 lm_sensors
 unzip
+kdePackages.kwallet
 ];
 hardware.bluetooth.enable = true;
 hardware.bluetooth.powerOnBoot = true;
 services.pipewire = {
  enable = true;
  pulse.enable = true; };
-services.gnome.gnome-keyring.enable = true;
+#services.gnome.gnome-keyring.enable = true;
 services.fstrim.enable = true;
 boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors  
 
