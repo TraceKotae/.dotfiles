@@ -31,5 +31,6 @@ imports = [
 	./home-waybar.nix
 	./home-hypridle.nix
 	./home-hyprlock.nix
+	./Assets/wlogout/default.nix
   ];
 }
