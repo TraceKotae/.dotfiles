@@ -8,7 +8,10 @@
   ];
 
   programs.brave.enable = true;
+  
   programs.kitty.enable = true;
+  programs.kitty.settings.confirm_os_window_close = 0;
+  
   programs.rofi.enable = true;
 
   home.file.".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink ./Assets/Hyprland/hyprland.conf;
@@ -33,4 +36,18 @@ imports = [
 	./home-hyprlock.nix
 	./Assets/wlogout/default.nix
   ];
+      # Set default terminal for thunar
+      xdg.configFile."xfce4/helpers.rc".text = ''
+      TerminalEmulator=kitty
+      TerminalEmulatorDismissed=true
+    '';
+      # Set default terminal for dolphin
+        xdg.configFile."kdeglobals".source = pkgs.writeText "kdeglobals" ''
+    [General]
+    TerminalApplication=kitty
+    # Add other kdeglobals content here if you have any,
+    # or consider merging if this file is managed elsewhere.
+    # If kdeglobals is managed by plasma-manager or similar,
+    # you might need to use its specific options.
+  '';
 }

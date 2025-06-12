@@ -19,6 +19,10 @@ outputs = { self, nixpkgs, ... }: {
    cliphist
    brightnessctl
    swaynotificationcenter
+   kdePackages.dolphin
+   kdePackages.qtsvg #icons if missing
+   kdePackages.kio-fuse #for mounting remote locations
+   kdePackages.kio-extras #more protocols for kio-fuse
   ];
   programs.hyprland = {
   enable = true;
