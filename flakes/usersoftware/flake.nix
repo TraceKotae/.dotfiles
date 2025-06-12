@@ -9,7 +9,7 @@ outputs = { self, nixpkgs, ... }: {
   environment.systemPackages = with pkgs; [
    discord
    easyeffects
-   wineWowPackages.stable
+#   wineWowPackages.stable
    mangohud
    obsidian
    git
@@ -17,10 +17,8 @@ outputs = { self, nixpkgs, ... }: {
    gedit
    gparted
    unzip
-   #nautilus
-   ];
+    ];    
   programs = {
-  
   steam = {
   enable = true;
   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play

@@ -14,6 +14,8 @@
       ];
     };
   };
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
   environment.systemPackages = with pkgs; [
     ffmpegthumbnailer # Need For Video / Image Preview
   ];
