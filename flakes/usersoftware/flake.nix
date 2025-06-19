@@ -21,6 +21,7 @@ outputs = { self, nixpkgs, ... }: {
    	ntfs3g 
    unzip
    nextcloud-client
+   lutris
     ];    
   programs = {
   steam = {
