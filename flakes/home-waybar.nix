@@ -5,7 +5,8 @@ programs.waybar = {
     enable = true;
     package = pkgs.waybar;
     settings = [
-      {
+      { 
+        spacing = 20;
         layer = "top";
         position = "top";
         modules-center = ["hyprland/workspaces"];
@@ -82,7 +83,7 @@ programs.waybar = {
         };
 
         "tray" = {
-          spacing = 12;
+          spacing = 5;
         };
 
         "pulseaudio" = {
