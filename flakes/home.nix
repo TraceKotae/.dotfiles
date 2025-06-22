@@ -30,11 +30,11 @@ imports = [
 	./home-gtk.nix
 	./home-qt.nix
 	./home-swappy.nix
-	./home-swaync.nix
+#	./home-swaync.nix
 	./home-waybar.nix
 	./home-hypridle.nix
 	./home-hyprlock.nix
-	./Assets/wlogout/default.nix
+#	./Assets/wlogout/default.nix
   ];
       # Set default terminal for thunar
       xdg.configFile."xfce4/helpers.rc".text = ''
