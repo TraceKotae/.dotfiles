@@ -13,8 +13,8 @@
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "efi";
-  boot.loader.efi.efiSysMountPoint = "nodev"; 
+  boot.loader.grub.device = "nodev";
+  boot.loader.efi.efiSysMountPoint = "/boot"; 
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiSupport = true;
  # boot.loader.grub.theme = pkgs.nixos-grub2-theme;
