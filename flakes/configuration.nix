@@ -13,9 +13,9 @@
   boot.loader.systemd-boot.enable = false;
 #  boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sdb1";
+  boot.loader.grub.device = "/dev/nvme1n1";
   boot.loader.grub.useOSProber = true;
-  boot.loader.grub.efiSupport = true;
+ # boot.loader.grub.efiSupport = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
