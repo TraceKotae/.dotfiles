@@ -16,6 +16,7 @@
   boot.loader.grub.device = "/boot";
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiSupport = true;
+  boot.loader.grub.theme = pkgs.nixos-grub-theme;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
