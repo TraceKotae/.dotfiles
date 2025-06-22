@@ -37,13 +37,13 @@ boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors
   
    # ... your fileSystems mounts for the Btrfs drives (from previous instructions) ...
   fileSystems."/mnt/4TBintSSD" = {
-    device = "/dev/disk/by-uuid/86f159de-d249-492d-bc11-7ec0be37f2b8"; # Replace with your actual UUID
+    device = "/dev/disk/by-uuid/c9fb51d5-39db-4ecf-a688-4c949c5c644b"; # Replace with your actual UUID
     fsType = "btrfs";
     options = [ "defaults" ];
   };
 
   fileSystems."/mnt/4TBextHDD" = {
-    device = "/dev/disk/by-uuid/82ee1fc8-549b-4cb5-a60b-ceab8aa73edd"; # Replace with your actual UUID
+    device = "/dev/disk/by-uuid/e5e5d4f1-1a68-4d0c-819f160cdd37005c"; # Replace with your actual UUID
     fsType = "btrfs";
     options = [ "defaults" "compress=zstd" ];
   };
