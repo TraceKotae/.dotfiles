@@ -1,23 +1,23 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+{ config, pkgs, lib, ... }: {
 
-{ config, pkgs, lib, ... }:{
+  imports = [
+    # not needed with disko
+    # ./hardware-configuration.nix
+  ];
 
-  imports =
-    [ # Include the results of the hardware scan.
- # not needed with disko     ./hardware-configuration.nix
-    ];
-
-#Bootloader.
+  # Bootloader.
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
- boot.loader.grub.device = "nodev";
- boot.loader.efi.efiSysMountPoint = "/boot";
- boot.loader.grub.useOSProber = true;
- boot.loader.grub.efiSupport = true;
-# boot.loader.grub.enableCryptodisk = true;
+  # Let disko handle the device
+  # boot.loader.grub.device = "nodev";
+  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.grub.useOSProber = true;
+  boot.loader.grub.efiSupport = true;
+  # boot.loader.grub.enableCryptodisk = true;
+
+  # Tell NixOS to use the disks from the disko configuration
+  boot.initrd.luks.devices = lib.mkForce {};
 
   networking.hostName = "nixos"; # Define your hostname.
 
