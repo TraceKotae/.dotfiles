@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
 	  ./disks.nix
+	  "${pkgs.disko}/nixos/disko.nix"
     ];
 #Bootloader.
   boot.loader.systemd-boot.enable = false;
