@@ -133,8 +133,7 @@
     xwayland.enable = true;
      };
    xdg.portal.enable = true;
-   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk, pkgs.xdg-desktop-portal-hyprland];
    xdg.portal.configPackages = [pkgs.hyprland];
    environment.sessionVariables = {NIXOS_OZONE_WL = "1"; };
 ##Flatpak Support
