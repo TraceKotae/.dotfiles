@@ -10,7 +10,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
   # Let disko handle the device
-  boot.loader.grub.devices = [ "/dev/nvme1n1" ]; # Add this line
+  boot.loader.grub.devices = [ "nodev" ]; # Add this line
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiSupport = true;
