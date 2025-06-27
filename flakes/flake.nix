@@ -13,17 +13,10 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          ./disks.nix # ADD THIS LINE BACK IN
+          ./disks.nix
           disko.nixosModules.disko
         ];
       };
     };
-
-    # THIS ENTIRE diskoConfig BLOCK SHOULD STILL BE REMOVED:
-    # diskoConfig = disko.lib.diskoConfig {
-    #   modules = [
-    #     ./disks.nix
-    #   ];
-    # };
   };
 }

@@ -39,8 +39,4 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  system.stateVersion = "23.11"; # Ensure this is correct for your original install or updated to 25.05/unstable
-
-  # REMOVE THE ENTIRE DISKO.DEVICES BLOCK FROM HERE
-
 }
