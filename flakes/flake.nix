@@ -19,8 +19,8 @@
           disko.nixosModules.disko
 		  home-manager.nixosModules.home-manager {
           home-manager.users.daniel = import ./homemanager/home.nix;
+		  }
         ];
-      };
     };
   };
 
