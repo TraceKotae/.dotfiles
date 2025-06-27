@@ -6,9 +6,10 @@
     disko.url = "github:nix-community/disko/master";     # Keep master for this test
     disko.inputs.nixpkgs.follows = "nixpkgs";
 	nvidia.url = "path:./nvidia";
+	systembase.url = "path:./systembase";
   };
 
-  outputs = { self, nixpkgs, disko, nvidia, ... } @ inputs: {
+  outputs = { self, nixpkgs, disko, nvidia, systembase, ... } @ inputs: {
     nixosConfigurations = {
       "nixos" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -17,6 +18,7 @@
           ./disks.nix
           disko.nixosModules.disko
 		  nvidia.nixosModules.default
+		  systembase.nixosModules.default
         ];
       };
     };
