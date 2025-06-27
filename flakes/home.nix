@@ -5,10 +5,10 @@
   home.username = "daniel";
   home.homeDirectory = "/home/daniel";
   home.packages = with pkgs; [
+  kwallet-pam
   ];
   
   services.kwalletd.enable = true;
-  home.packages = [ pkgs.kwallet-pam ];
   security.pam.services.hyprland = {
     enableKwallet = true;
   };
