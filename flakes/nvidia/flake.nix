@@ -1,5 +1,5 @@
 {
-description = "Wayland Base Desktop Configuration";
+description = "Nvidia Drivers";
 
 inputs = {
  nixpkgs.url = "github:NixOS/nixpkgs/unstable";
