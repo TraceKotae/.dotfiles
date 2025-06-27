@@ -1,45 +1,34 @@
 { config, pkgs, lib, ... }: {
 
-  imports = [
-    # not needed with disko
-    # ./hardware-configuration.nix
-  ];
-
-  # Bootloader.
+#Bootloader
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
-  # Let disko handle the device
-  boot.loader.grub.devices = [ "nodev" ]; # Add this line
+  boot.loader.grub.devices = [ "nodev" ];
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.enableCryptodisk = true;
-
-  # Tell NixOS to use the disks from the disko configuration
   boot.initrd.luks.devices = lib.mkForce {};
+  
+#Define your useraccount
+    users.users.daniel = {
+    isNormalUser = true;
+    description = "daniel";
+    extraGroups = [ "networkmanager" "wheel" "gamemode" ];
+    packages = with pkgs; [];
+    };
 
-  networking.hostName = "nixos"; # Define your hostname.
-
-  # Enable networking
+#Networking
+  networking.hostName = "nixos"; # Define your hostname. This is used for more than just the network!
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
-
-  # Define your user.
-  users.users.daniel = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [];
-  };
-
-  # Allow unfree packages
+#Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+#Install these Packages
   environment.systemPackages = with pkgs; [
-  git
-  ntfs3g #to read ntfs packages. this should also make windows efi show up in grub as bootable options.
-  ];
+   git
+   ntfs3g #to read ntfs drives this should also make windows efi show up in grub as bootable options.
+   ];
 
 }
