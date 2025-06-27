@@ -5,7 +5,7 @@
   home.username = "daniel";
   home.homeDirectory = "/home/daniel";
   home.packages = with pkgs; [
-  kwallet-pam
+  kdePackages.kwallet-pam
   ];
   
   #services.kwalletd.enable = true;
