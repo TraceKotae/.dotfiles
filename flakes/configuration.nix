@@ -43,7 +43,7 @@
 #stylix.image = ./Assets/Wallpapers/SakuratreeLarge.png;
 #stylix.opacity.terminal = 0.5;
 #stylix.opacity.applications = 0.5;
-stylix.opacity.desktop = 0.5;
+#stylix.opacity.desktop = 0.5;
 #stylix.opacity.popups = 0.5;
 #stylix.fonts = {
 #	monospace = {
