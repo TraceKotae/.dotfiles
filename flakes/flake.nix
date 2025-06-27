@@ -2,9 +2,9 @@
   description = "Toplevel Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Keep unstable for this test
-    disko.url = "github:nix-community/disko/master";     # Keep master for this test
-	home-manager.url = "github:nix-community/home-manager/unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    disko.url = "github:nix-community/disko/master";
+	home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 	nvidia.url = "path:./nvidia";
