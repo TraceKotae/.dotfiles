@@ -12,7 +12,7 @@ outputs = { self, nixpkgs, ... } @ inputs: {
    modules = [
     ./configuration.nix
     ./disks.nix
-     }
+     };
     ];
    };
   };
