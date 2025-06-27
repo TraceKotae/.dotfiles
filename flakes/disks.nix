@@ -1,58 +1,72 @@
 {
   disko.devices = {
     disk = {
-      nvme1n1 = { # Ensure this is your correct disk
+      main = {
         type = "disk";
-        device = "/dev/nvme1n1"; # Ensure this is your correct device path
+        device = "/dev/disk/by-diskseq/1";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              label = "boot";
+              priority = 1;
               name = "ESP";
-              size = "512M";
+              start = "1M";
+              end = "128M";
               type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ]; # Changed to common umask for ESP
+                mountOptions = [ "umask=0077" ];
               };
             };
             root = {
               size = "100%";
-              label = "root";
               content = {
-                type = "btrfs"; # Changed from type="filesystem"; format="btrfs";
-                extraArgs = ["-L" "nixos" "-f"];
-                mountpoint = "/"; # Mount the root Btrfs partition here
+                type = "btrfs";
+                extraArgs = [ "-f" ]; # Override existing partition
+                # Subvolumes must set a mountpoint in order to be mounted,
+                # unless their parent is mounted
                 subvolumes = {
-                  # This subvolume will hold the root filesystem, mounted at `/`
-                  # The common convention for this subvolume is `@` or `rootfs`
+                  # Subvolume name is different from mountpoint
                   "/rootfs" = {
                     mountpoint = "/";
-                    mountOptions = ["compress=zstd" "noatime"];
                   };
+                  # Subvolume name is the same as the mountpoint
                   "/home" = {
+                    mountOptions = [ "compress=zstd" ];
                     mountpoint = "/home";
-                    mountOptions = ["compress=zstd" "noatime"];
                   };
+                  # Sub(sub)volume doesn't need a mountpoint as its parent is mounted
+                  "/home/user" = { };
+                  # Parent is not mounted so the mountpoint must be set
                   "/nix" = {
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
                     mountpoint = "/nix";
-                    mountOptions = ["compress=zstd" "noatime"];
                   };
-                  "/persist" = {
-                    mountpoint = "/persist";
-                    mountOptions = ["compress=zstd" "noatime"];
-                  };
-                  "/var/log" = { # Changed subvolume name for clarity
-                    mountpoint = "/var/log";
-                    mountOptions = ["compress=zstd" "noatime"];
-                  };
-                  # Subvolume for the swapfile, mounted at a hidden path
+                  # This subvolume will be created but not mounted
+                  "/test" = { };
+                  # Subvolume for the swapfile
                   "/swap" = {
-                    mountpoint = "/.swapvol"; # Mountpoint for the subvolume
-                    swap.swapfile.size = "10G";
+                    mountpoint = "/.swapvol";
+                    swap = {
+                      swapfile.size = "20M";
+                      swapfile2.size = "20M";
+                      swapfile2.path = "rel-path";
+                    };
+                  };
+                };
+
+                mountpoint = "/partition-root";
+                swap = {
+                  swapfile = {
+                    size = "20M";
+                  };
+                  swapfile1 = {
+                    size = "20M";
                   };
                 };
               };
