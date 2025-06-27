@@ -8,6 +8,8 @@ outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
  imports = [
  ./mountdisks.nix
+ ./flatpak.nix
+ ./boot.nix
 ];
 
 environment.systemPackages = with pkgs; [
