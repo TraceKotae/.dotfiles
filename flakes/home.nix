@@ -9,9 +9,6 @@
   ];
   
   services.kwalletd.enable = true;
-  security.pam.services.hyprland = {
-    enableKwallet = true;
-  };
 
   programs.brave.enable = true;
   
