@@ -42,6 +42,30 @@
     options = [ "defaults" "compress=zstd" ];
   };
 
+#Nvidia Graphics Drivers
+ services.xserver.videoDrivers = ["nvidia"];
+ hardware.nvidia.modesetting.enable = true;
+ hardware.nvidia.open = true;
+ hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+ hardware.nvidia.nvidiaSettings = true;
+ hardware.graphics.enable = true;
+
+ environment.sessionVariables = {
+   __GL_SHADER_DISK_CACHE = "1";
+   __GL_SHADER_DISK_CACHE_PATH = "/mnt/4TBintSSD/NvidiaShaderCache";
+   __GL_SHADER_DISK_CACHE_SIZE = "40073741824";
+ };
+ 
+#Needed Hardware Settings
+ hardware.bluetooth.enable = true;
+ hardware.bluetooth.powerOnBoot = true;
+ services.pipewire = {
+  enable = true;
+  pulse.enable = true; };
+ services.fstrim.enable = true;
+ boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors  
+
+
 #Extra boot options
  boot = {
     kernelModules = [ "v4l2loopback" ];
@@ -159,28 +183,34 @@
   coolercontrol.enable = true;
   coolercontrol.nvidiaSupport = true;
   };
-
-#Nvidia Graphics Drivers
- services.xserver.videoDrivers = ["nvidia"];
- hardware.nvidia.modesetting.enable = true;
- hardware.nvidia.open = true;
- hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
- hardware.nvidia.nvidiaSettings = true;
- hardware.graphics.enable = true;
-
- environment.sessionVariables = {
-   __GL_SHADER_DISK_CACHE = "1";
-   __GL_SHADER_DISK_CACHE_PATH = "/mnt/4TBintSSD/NvidiaShaderCache";
-   __GL_SHADER_DISK_CACHE_SIZE = "40073741824";
- };
- 
-#Needed Hardware Settings
- hardware.bluetooth.enable = true;
- hardware.bluetooth.powerOnBoot = true;
- services.pipewire = {
-  enable = true;
-  pulse.enable = true; };
- services.fstrim.enable = true;
- boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors  
-
+  
+#Theming
+stylix.enable = true;
+stylix.targets.gtk.enable = true;
+stylix.targets.qt.enable = true;
+stylix.autoEnable = true;
+stylix.cursor.package = pkgs.bibata-cursors;
+stylix.cursor.name = "Bibata-Modern-Ice";
+stylix.cursor.size = 24;
+stylix.polarity = "dark";
+stylix.image = ./Assets/Wallpapers/SakuratreeLarge.png;
+stylix.opacity.terminal = 0.5;
+stylix.opacity.applications = 0.5;
+stylix.opacity.desktop = 0.5;
+stylix.opacity.popups = 0.5;
+stylix.fonts = {
+	monospace = {
+		package = pkgs.nerd-fonts.jetbrains-mono;
+		name = "JetBrainsMono Nerd Font Mono";
+		};
+		
+	sansSerif = {
+		package = pkgs.dejavu_fonts;
+		name = "DejaVu Sans";
+		};
+	serif = {
+		package = pkgs.dejavu_fonts;
+		name = "DejaVu Serif";
+		};
+	};  
 }
