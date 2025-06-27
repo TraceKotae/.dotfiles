@@ -2,20 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:{ # Add 'disko' to the parameters if it's not there, like `{ config, pkgs, lib, disko, ... }`
-                              # Though usually not needed if disko is in inputs
+{ config, pkgs, lib, ... }:
 
+{
   imports =
     [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
-
 #Bootloader.
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
-  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.efi.efiSysMountPoint = "/boot"; 
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiSupport = true;
 
@@ -33,14 +32,34 @@
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console.font = "lat2-16";
-  # console.keyMap = "de";
+  i18n.defaultLocale = "en_GB.UTF-8";
 
-  # Define your user.
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_DE.UTF-8";
+    LC_IDENTIFICATION = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_NAME = "de_DE.UTF-8";
+    LC_NUMERIC = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+    LC_TELEPHONE = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
+  };
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "de";
+    variant = "";
+  };
+
+  # Configure console keymap
+  console.keyMap = "de";
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.daniel = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    description = "daniel";
+    extraGroups = [ "networkmanager" "wheel" "gamemode" ];
     packages = with pkgs; [];
   };
 
@@ -61,7 +80,7 @@
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
-  #   };
+  # };
 
   # List services that you want to enable:
 
@@ -79,73 +98,9 @@
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
-  # in the NixOS manual.
-  system.stateVersion = "23.11"; # Did you update this? Using 25.05 now.
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "25.05"; # Did you read the comment?
 
-  # Directly define disko.devices here,
-  # copying the content from your disks.nix (the latest corrected version).
-  # This makes the disk configuration part of your main system config.
-  disko.devices = {
-    disk = {
-      nvme1n1 = { # Ensure this is your correct disk (e.g., nvme0n1 or sda)
-        type = "disk";
-        device = "/dev/nvme1n1"; # Ensure this is your correct device path
-        content = {
-          type = "gpt";
-          partitions = {
-            ESP = {
-              label = "boot";
-              name = "ESP";
-              size = "512M";
-              type = "EF00";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
-              };
-            };
-            root = {
-              size = "100%";
-              label = "root";
-              content = {
-                type = "btrfs";
-                extraArgs = ["-L" "nixos" "-f"];
-                mountpoint = "/"; # Mount the root Btrfs partition itself at /
-                subvolumes = {
-                  # This subvolume will hold the actual root filesystem, mounted at `/`
-                  "/rootfs" = {
-                    mountpoint = "/"; # This subvolume maps to the system's root
-                    mountOptions = ["compress=zstd" "noatime"];
-                  };
-                  "/home" = {
-                    mountpoint = "/home";
-                    mountOptions = ["compress=zstd" "noatime"];
-                  };
-                  "/nix" = {
-                    mountpoint = "/nix";
-                    mountOptions = ["compress=zstd" "noatime"];
-                  };
-                  "/persist" = {
-                    mountpoint = "/persist";
-                    mountOptions = ["compress=zstd" "noatime"];
-                  };
-                  "/var/log" = { # Subvolume name matching mountpoint for clarity
-                    mountpoint = "/var/log";
-                    mountOptions = ["compress=zstd" "noatime"];
-                  };
-                  # Subvolume for the swapfile, mounted at a hidden path
-                  "/swap" = {
-                    mountpoint = "/.swapvol"; # Mountpoint for the subvolume
-                    swap.swapfile.size = "10G";
-                  };
-                };
-              };
-            };
-          };
-        };
-      };
-    };
-  };
-
+# ENABLE FLAKES
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
