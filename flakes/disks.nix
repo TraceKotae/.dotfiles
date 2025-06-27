@@ -1,7 +1,7 @@
 {
   disko.devices = {
     disk = {
-      nvme1n1 = { # Ensure this is your correct disk
+      nvme1n1 = { # Ensure this is your correct disk (e.g., nvme0n1 or sda)
         type = "disk";
         device = "/dev/nvme1n1"; # Ensure this is your correct device path
         content = {
@@ -16,21 +16,19 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ]; # Changed to common umask for ESP
+                mountOptions = [ "umask=0077" ];
               };
             };
             root = {
               size = "100%";
               label = "root";
               content = {
-                type = "btrfs"; # Changed from type="filesystem"; format="btrfs";
+                type = "btrfs";
                 extraArgs = ["-L" "nixos" "-f"];
-                mountpoint = "/"; # Mount the root Btrfs partition here
+                mountpoint = "/"; # Mount the root Btrfs partition itself at /
                 subvolumes = {
-                  # This subvolume will hold the root filesystem, mounted at `/`
-                  # The common convention for this subvolume is `@` or `rootfs`
                   "/rootfs" = {
-                    mountpoint = "/";
+                    mountpoint = "/"; # This subvolume maps to the system's root
                     mountOptions = ["compress=zstd" "noatime"];
                   };
                   "/home" = {
@@ -45,13 +43,12 @@
                     mountpoint = "/persist";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  "/var/log" = { # Changed subvolume name for clarity
+                  "/var/log" = {
                     mountpoint = "/var/log";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  # Subvolume for the swapfile, mounted at a hidden path
                   "/swap" = {
-                    mountpoint = "/.swapvol"; # Mountpoint for the subvolume
+                    mountpoint = "/.swapvol";
                     swap.swapfile.size = "10G";
                   };
                 };
@@ -61,5 +58,39 @@
         };
       };
     };
+  };
+}
+Step 3: Update your flake.nix
+This step brings back the import of disks.nix into your system configuration, but crucially, it still does not define the diskoConfig output.
+
+Nix
+
+{
+  description = "Toplevel Flake";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Keep unstable for this test
+    disko.url = "github:nix-community/disko/master";     # Keep master for this test
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { self, nixpkgs, disko, ... } @ inputs: {
+    nixosConfigurations = {
+      "nixos" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          ./disks.nix # ADD THIS LINE BACK IN
+          disko.nixosModules.disko
+        ];
+      };
+    };
+
+    # THIS ENTIRE diskoConfig BLOCK SHOULD STILL BE REMOVED:
+    # diskoConfig = disko.lib.diskoConfig {
+    #   modules = [
+    #     ./disks.nix
+    #   ];
+    # };
   };
 }

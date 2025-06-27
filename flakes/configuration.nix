@@ -2,8 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:{ # Add 'disko' to the parameters if it's not there, like `{ config, pkgs, lib, disko, ... }`
-                              # Though usually not needed if disko is in inputs
+{ config, pkgs, lib, ... }:{
 
   imports =
     [ # Include the results of the hardware scan.
@@ -20,22 +19,12 @@
   boot.loader.grub.efiSupport = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console.font = "lat2-16";
-  # console.keyMap = "de";
 
   # Define your user.
   users.users.daniel = {
@@ -44,47 +33,23 @@
     packages = with pkgs; [];
   };
 
-  # Enable automatic login for the user.
-  # services.getty.autologinUser = "daniel";
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  #   };
+  system.stateVersion = "23.11"; # Ensure this is correct for your original install or updated to 25.05/unstable
 
-  # List services that you want to enable:
+  # REMOVE THE ENTIRE DISKO.DEVICES BLOCK FROM HERE
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+}
+Step 2: Ensure disks.nix is Correct
+Make sure your ~/.dotfiles/flakes/disks.nix file contains the latest corrected version of your disk configuration. This is the file that starts with { disko.devices = { ... }; }.
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+Nix
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # in the NixOS manual.
-  system.stateVersion = "23.11"; # Did you update this? Using 25.05 now.
-
-  # Directly define disko.devices here,
-  # copying the content from your disks.nix (the latest corrected version).
-  # This makes the disk configuration part of your main system config.
+{
   disko.devices = {
     disk = {
       nvme1n1 = { # Ensure this is your correct disk (e.g., nvme0n1 or sda)
@@ -113,7 +78,6 @@
                 extraArgs = ["-L" "nixos" "-f"];
                 mountpoint = "/"; # Mount the root Btrfs partition itself at /
                 subvolumes = {
-                  # This subvolume will hold the actual root filesystem, mounted at `/`
                   "/rootfs" = {
                     mountpoint = "/"; # This subvolume maps to the system's root
                     mountOptions = ["compress=zstd" "noatime"];
@@ -130,13 +94,12 @@
                     mountpoint = "/persist";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  "/var/log" = { # Subvolume name matching mountpoint for clarity
+                  "/var/log" = {
                     mountpoint = "/var/log";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  # Subvolume for the swapfile, mounted at a hidden path
                   "/swap" = {
-                    mountpoint = "/.swapvol"; # Mountpoint for the subvolume
+                    mountpoint = "/.swapvol";
                     swap.swapfile.size = "10G";
                   };
                 };
@@ -147,5 +110,4 @@
       };
     };
   };
-
 }
