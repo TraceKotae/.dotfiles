@@ -63,12 +63,11 @@
   enable = true;
   pulse.enable = true; };
  services.fstrim.enable = true;
- boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors  
 
 
 #Extra boot options
  boot = {
-    kernelModules = [ "v4l2loopback" ];
+    kernelModules = [ "v4l2loopback" "coretemp" "nct6775" ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     # Appimage Support
     binfmt.registrations.appimage = {
