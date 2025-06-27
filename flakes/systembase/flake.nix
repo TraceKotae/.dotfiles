@@ -7,7 +7,7 @@ inputs = {
 outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
  imports = [
- ./mountdisks
+ ./mountdisks.nix
 ];
 
 
