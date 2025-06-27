@@ -21,13 +21,6 @@ environment.systemPackages = with pkgs [
 	unzip
 	kdePackages.kwallet
 ];
-
-hardware.bluetooth.enable = true;
-hardware.bluetooth.powerOnBoot = true;
-services.pipewire.enable = true;
-services.pipewire.pulse.enable = true;
-services.fstrim.enable = true;
-boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors  
 };
 };
 }
