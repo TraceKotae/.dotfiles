@@ -2,9 +2,10 @@
   description = "Toplevel Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    # Use the unstable channel for both nixpkgs and disko for latest fixes
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    disko.url = "github:nix-community/disko/master"; # Point to disko's master branch
+    disko.inputs.nixpkgs.follows = "nixpkgs"; # Ensure disko uses this unstable nixpkgs
   };
 
   outputs = { self, nixpkgs, disko, ... } @ inputs: {
