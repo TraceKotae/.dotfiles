@@ -9,7 +9,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, disko, home-manager ... } @ inputs: {
+  outputs = { self, nixpkgs, disko, home-manager, ... } @ inputs: {
     nixosConfigurations = {
       "nixos" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -32,12 +32,12 @@
   ];
 ##Mount Drives
   fileSystems."/mnt/4TBintSSD" = {
-    device = "/dev/disk/by-uuid/c9fb51d5-39db-4ecf-a688-4c949c5c644b"; # Replace with your actual UUID
+    device = "/dev/disk/by-uuid/9d8cbd20-6618-4034-a628-f6cc969b4aa9"; # Replace with your actual UUID
     fsType = "btrfs";
-    options = [ "defaults" ];
+    options = [ "defaults" "compress=zstd"];
   };
   fileSystems."/mnt/4TBextHDD" = {
-    device = "/dev/disk/by-uuid/e5e5d4f1-1a68-4d0c-819f160cdd37005c"; # Replace with your actual UUID
+    device = "/dev/disk/by-uuid/8958f43b-79a9-48cb-9ca3-38d7cb586c67"; # Replace with your actual UUID
     fsType = "btrfs";
     options = [ "defaults" "compress=zstd" ];
   };
