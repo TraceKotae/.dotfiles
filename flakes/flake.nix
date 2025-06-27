@@ -6,6 +6,7 @@
     disko.url = "github:nix-community/disko/master";
 	home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+	stylix.url = "github:nix-community/stylix/master";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 	nvidia.url = "path:./nvidia";
 	systembase.url = "path:./systembase";
