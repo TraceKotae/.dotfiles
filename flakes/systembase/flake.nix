@@ -11,7 +11,7 @@ outputs = { self, nixpkgs, ... }: {
 ];
 
 
-environment.systemPackages = with pkgs [
+environment.systemPackages = with pkgs; [
 	wget
 	blueman
 	pavucontrol
