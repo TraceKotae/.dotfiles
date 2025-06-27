@@ -2,10 +2,9 @@
   description = "Toplevel Flake";
 
   inputs = {
-    # Use the unstable channel for both nixpkgs and disko for latest fixes
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    disko.url = "github:nix-community/disko/master"; # Point to disko's master branch
-    disko.inputs.nixpkgs.follows = "nixpkgs"; # Ensure disko uses this unstable nixpkgs
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Still using unstable for diagnosis
+    disko.url = "github:nix-community/disko/master";     # Still using master for diagnosis
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, disko, ... } @ inputs: {
@@ -14,17 +13,17 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          ./disks.nix
-          disko.nixosModules.disko
+          # REMOVE THIS LINE IF IT EXISTS: ./disks.nix
+          disko.nixosModules.disko # Keep this to enable the disko module
         ];
       };
     };
 
-    # Expose the disko configuration directly for use with 'nix run'
-    diskoConfig = disko.lib.diskoConfig {
-      modules = [
-        ./disks.nix
-      ];
-    };
+    # REMOVE THIS ENTIRE diskoConfig BLOCK:
+    # diskoConfig = disko.lib.diskoConfig {
+    #   modules = [
+    #     ./disks.nix
+    #   ];
+    # };
   };
 }
