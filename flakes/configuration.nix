@@ -17,6 +17,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiSupport = true;
+  boot.loader.grub.enableCryptodisk = true;
 
   networking.hostName = "nixos"; # Define your hostname.
 
