@@ -9,22 +9,23 @@ outputs = { self, nixpkgs, ... }: {
  imports = [
  ./mountdisks
 ];
+
+
 environment.systemPackages = with pkgs [
-wget
-blueman
-pavucontrol
-wireplumber
-#seahorse
-appimage-run
-lm_sensors
-unzip
-kdePackages.kwallet
+	wget
+	blueman
+	pavucontrol
+	wireplumber
+	appimage-run
+	lm_sensors
+	unzip
+	kdePackages.kwallet
 ];
+
 hardware.bluetooth.enable = true;
 hardware.bluetooth.powerOnBoot = true;
-services.pipewire = {
- enable = true;
- pulse.enable = true};
+services.pipewire.enable = true;
+services.pipewire.pulse.enable = true;
 services.fstrim.enable = true;
 boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors  
 };
