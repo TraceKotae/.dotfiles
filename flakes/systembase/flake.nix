@@ -6,21 +6,6 @@ inputs = {
 };
 outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
- imports = [
- ./mountdisks
-];
-
-
-environment.systemPackages = with pkgs [
-	wget
-	blueman
-	pavucontrol
-	wireplumber
-	appimage-run
-	lm_sensors
-	unzip
-	kdePackages.kwallet
-];
 
 hardware.bluetooth.enable = true;
 hardware.bluetooth.powerOnBoot = true;
