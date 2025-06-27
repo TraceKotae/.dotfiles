@@ -5,10 +5,7 @@
   home.username = "daniel";
   home.homeDirectory = "/home/daniel";
   home.packages = with pkgs; [
-  kdePackages.kwallet-pam
   ];
-  
-  #services.kwalletd.enable = true;
 
   programs.brave.enable = true;
   

@@ -20,7 +20,7 @@ environment.systemPackages = with pkgs; [
 	appimage-run
 	lm_sensors
 	unzip
-#	kdePackages.kwallet #moved to home.nix
+	kdePackages.kwallet
 ];
 
 hardware.bluetooth.enable = true;
