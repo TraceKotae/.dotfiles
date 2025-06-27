@@ -8,8 +8,8 @@ outputs = { self, nixpkgs, ... }: {
  nixosModules.default = { config, pkgs, ... }: {
  imports = [
  ./mountdisks
- ];
-  environment.systemPackages = with pkgs [
+ ]
+environment.systemPackages = with pkgs [
 git
 wget
 blueman
