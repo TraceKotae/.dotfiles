@@ -12,7 +12,7 @@
 	systembase.url = "path:./systembase";
   };
 
-  outputs = { self, nixpkgs, disko, nvidia, systembase, home-manager, ... } @ inputs: {
+  outputs = { self, nixpkgs, disko, nvidia, systembase, home-manager, stylix, ... } @ inputs: {
     nixosConfigurations = {
       "nixos" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -21,6 +21,7 @@
           ./disks.nix
           disko.nixosModules.disko
 		  nvidia.nixosModules.default
+		  stylix.nixosModules.stylix
 		  systembase.nixosModules.default
 		  home-manager.nixosModules.home-manager {
           home-manager.users.daniel = import ./home.nix;
