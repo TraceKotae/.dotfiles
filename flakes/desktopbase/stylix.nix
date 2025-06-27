@@ -5,7 +5,7 @@
   stylix.enable = true;
   stylix.autoEnable = true; # Automatically enables most of the below targets
   stylix.polarity = "dark";
-  stylix.image = ./SakuratreeLarge.png;
+  stylix.image = ./Wallpapers/SakuratreeLarge.png;
 
   # Set opacities
   stylix.opacity = {

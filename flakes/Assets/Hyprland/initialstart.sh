@@ -1,2 +1,2 @@
 swww-daemon &
-swww img ~/.dotfiles/flakes/Assets/Wallpapers/SakuratreeLarge.png &
+swww img ~/.dotfiles/flakes/desktopbase/Wallpapers/SakuratreeLarge.png &
