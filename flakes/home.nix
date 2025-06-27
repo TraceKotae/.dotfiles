@@ -30,11 +30,11 @@ imports = [
 	./homemanager/gtk.nix
 	./homemanager/qt.nix
 	./homemanager/swappy.nix
-    ./homemanager/swaync.nix
+#    ./homemanager/swaync.nix
 	./homemanager/waybar.nix
 	./homemanager/hypridle.nix
 	./homemanager/hyprlock.nix
-    ./Assets/wlogout/default.nix
+#    ./Assets/wlogout/default.nix
   ];
 
 #Set Default Terminal to Kitty
