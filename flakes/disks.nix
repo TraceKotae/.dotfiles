@@ -1,9 +1,9 @@
 {
   disko.devices = {
     disk = {
-      nvme1n1 = {
+      nvme1n1 = { # Ensure this is your correct disk
         type = "disk";
-        device = "/dev/nvme1n1";
+        device = "/dev/nvme1n1"; # Ensure this is your correct device path
         content = {
           type = "gpt";
           partitions = {
@@ -16,41 +16,42 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                ];
+                mountOptions = [ "umask=0077" ]; # Changed to common umask for ESP
               };
             };
-			root = {
+            root = {
               size = "100%";
               label = "root";
               content = {
-                type = "filesystem";
-                format = "btrfs"; # <--- This line moved here
+                type = "btrfs"; # Changed from type="filesystem"; format="btrfs";
                 extraArgs = ["-L" "nixos" "-f"];
+                mountpoint = "/"; # Mount the root Btrfs partition here
                 subvolumes = {
-                  "/root" = {
+                  # This subvolume will hold the root filesystem, mounted at `/`
+                  # The common convention for this subvolume is `@` or `rootfs`
+                  "/rootfs" = {
                     mountpoint = "/";
-                    mountOptions = ["subvol=root" "compress=zstd" "noatime"];
+                    mountOptions = ["compress=zstd" "noatime"];
                   };
                   "/home" = {
                     mountpoint = "/home";
-                    mountOptions = ["subvol=home" "compress=zstd" "noatime"];
+                    mountOptions = ["compress=zstd" "noatime"];
                   };
                   "/nix" = {
                     mountpoint = "/nix";
-                    mountOptions = ["subvol=nix" "compress=zstd" "noatime"];
+                    mountOptions = ["compress=zstd" "noatime"];
                   };
                   "/persist" = {
                     mountpoint = "/persist";
-                    mountOptions = ["subvol=persist" "compress=zstd" "noatime"];
+                    mountOptions = ["compress=zstd" "noatime"];
                   };
-                  "/log" = {
+                  "/var/log" = { # Changed subvolume name for clarity
                     mountpoint = "/var/log";
-                    mountOptions = ["subvol=log" "compress=zstd" "noatime"];
+                    mountOptions = ["compress=zstd" "noatime"];
                   };
+                  # Subvolume for the swapfile, mounted at a hidden path
                   "/swap" = {
-                    mountpoint = "/swap";
+                    mountpoint = "/.swapvol"; # Mountpoint for the subvolume
                     swap.swapfile.size = "10G";
                   };
                 };
