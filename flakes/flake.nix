@@ -9,11 +9,12 @@
 	stylix.url = "github:nix-community/stylix/master";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 	nvidia.url = "path:./nvidia";
-	desktopbase.url = "path:./desktopbase";
 	systembase.url = "path:./systembase";
+	desktopbase.url = "path:./desktopbase";
+	usersoftware.url ="path:./usersoftware";
   };
 
-  outputs = { self, nixpkgs, disko, nvidia, systembase, home-manager, stylix, desktopbase, ... } @ inputs: {
+  outputs = { self, nixpkgs, disko, nvidia, systembase, home-manager, stylix, desktopbase, usersoftware, ... } @ inputs: {
     nixosConfigurations = {
       "nixos" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -25,6 +26,7 @@
 		  stylix.nixosModules.stylix
 		  systembase.nixosModules.default
 		  desktopbase.nixosModules.default
+		  usersoftware.nixosModules.default
 		  home-manager.nixosModules.home-manager {
           home-manager.users.daniel = import ./home.nix;
           }
