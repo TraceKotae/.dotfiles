@@ -10,7 +10,6 @@ outputs = { self, nixpkgs, ... }: {
  ./mountdisks.nix
 ];
 
-
 environment.systemPackages = with pkgs; [
 	wget
 	blueman
