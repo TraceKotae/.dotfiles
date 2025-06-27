@@ -32,15 +32,15 @@
    ];
    
 ##THEMING   
-#stylix.enable = true;
+stylix.enable = true;
 #stylix.targets.gtk.enable = true;
 #stylix.targets.qt.enable = true;
-#stylix.autoEnable = true;
+stylix.autoEnable = true;
 #stylix.cursor.package = pkgs.bibata-cursors;
 #stylix.cursor.name = "Bibata-Modern-Ice";
 #stylix.cursor.size = 24;
 #stylix.polarity = "dark";
-#stylix.image = ./Assets/Wallpapers/SakuratreeLarge.png;
+stylix.image = ./Assets/Wallpapers/SakuratreeLarge.png;
 #stylix.opacity.terminal = 0.5;
 #stylix.opacity.applications = 0.5;
 #stylix.opacity.desktop = 0.5;
