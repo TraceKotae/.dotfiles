@@ -38,6 +38,8 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+  git
+  ntfs3g #to read ntfs packages. this should also make windows efi show up in grub as bootable options.
   ];
 
 }
