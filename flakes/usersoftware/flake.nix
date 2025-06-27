@@ -19,6 +19,7 @@ outputs = { self, nixpkgs, ... }: {
    btrfs-progs
    unzip
    nextcloud-client
+   nextcloud-talk-desktop
 #   lutris
     ];    
   programs = {
