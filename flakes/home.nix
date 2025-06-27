@@ -8,7 +8,7 @@
   kwallet-pam
   ];
   
-  services.kwalletd.enable = true;
+  #services.kwalletd.enable = true;
 
   programs.brave.enable = true;
   
