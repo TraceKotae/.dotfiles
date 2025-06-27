@@ -13,12 +13,11 @@
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.efi.efiSysMountPoint = "/boot";
- # boot.loader.grub.useOSProber = true;
- boot.loader.grub.extraConfig = '' search --set=root --fs-uuid 714f5a1-0ba9-4e4d-b5b3-2d96e4a9ea4c set prefix=($root)/boot/grub;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.enableCryptodisk = true;
+# boot.loader.grub.device = "nodev";
+# boot.loader.efi.efiSysMountPoint = "/boot";
+# boot.loader.grub.useOSProber = true;
+# boot.loader.grub.efiSupport = true;
+# boot.loader.grub.enableCryptodisk = true;
 
   networking.hostName = "nixos"; # Define your hostname.
 
