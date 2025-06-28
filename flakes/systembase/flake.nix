@@ -20,10 +20,22 @@ environment.systemPackages = with pkgs; [
 	appimage-run
 	lm_sensors
 	unzip
-	kdePackages.kwallet
-	kdePackages.kwalletmanager
-	qttools
+	
+	
+#	kdePackages.kwallet
+#	kdePackages.kwalletmanager
+        gnome.gnome-keyring.enable = true;
+	seahorse
+#	qttools
 ];
+
+smartd = { #SMART monitoring for harddrives
+      enable =
+        if profile == "vm"
+        then false
+        else true;
+      autodetect = true;
+    };
 
 hardware.bluetooth.enable = true;
 hardware.bluetooth.powerOnBoot = true;
