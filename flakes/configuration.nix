@@ -30,6 +30,27 @@
    git
    ntfs3g #to read ntfs drives this should also make windows efi show up in grub as bootable options.
    ];
+   
+ #Internationalization properties
+  time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "en_GB.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_DE.UTF-8";
+    LC_IDENTIFICATION = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_NAME = "de_DE.UTF-8";
+    LC_NUMERIC = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+    LC_TELEPHONE = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
+  };
+  services.xserver.xkb = {
+    layout = "de";
+    variant = "";
+  };
+  console.keyMap = "de";
+  
 #Automatically remove old generations
 #  nix.gc = {
 #   automatic = true;
