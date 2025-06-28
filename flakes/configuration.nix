@@ -30,5 +30,9 @@
    git
    ntfs3g #to read ntfs drives this should also make windows efi show up in grub as bootable options.
    ];
-   
+#Automatically remove old generations
+#  nix.gc = {
+#   automatic = true;
+#    options = "--delete-older-than 30d";
+#  }; 
 }
