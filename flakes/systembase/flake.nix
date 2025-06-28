@@ -29,10 +29,7 @@ environment.systemPackages = with pkgs; [
 ];
 
 smartd = { #SMART monitoring for harddrives
-      enable =
-        if profile == "vm"
-        then false
-        else true;
+      enable = true;
       autodetect = true;
     };
     
