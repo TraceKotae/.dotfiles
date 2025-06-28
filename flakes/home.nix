@@ -37,6 +37,8 @@ imports = [
     ./Assets/wlogout/default.nix
   ];
 
+#services.nextcloud-client.enable = true;
+
 #Set Default Terminal to Kitty
 ##Thunar
       xdg.configFile."xfce4/helpers.rc".text = ''

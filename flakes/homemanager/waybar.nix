@@ -19,10 +19,10 @@ programs.waybar = {
           "idle_inhibitor"
         ];
         modules-right = [
+          "tray"
           "custom/notification"
           "custom/exit"
           "battery"
-          "tray"
           "clock"
         ];
 

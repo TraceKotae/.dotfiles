@@ -21,7 +21,8 @@ outputs = { self, nixpkgs, ... }: {
    nextcloud-client
    nextcloud-talk-desktop
 #   lutris
-    ];    
+    ];
+
   programs = {
   steam = {
   enable = true;
