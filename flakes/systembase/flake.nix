@@ -24,7 +24,6 @@ environment.systemPackages = with pkgs; [
 	
 #	kdePackages.kwallet
 #	kdePackages.kwalletmanager
-        gnome.gnome-keyring.enable = true;
 	seahorse
 #	qttools
 ];
@@ -36,7 +35,8 @@ smartd = { #SMART monitoring for harddrives
         else true;
       autodetect = true;
     };
-
+    
+gnome.gnome-keyring.enable = true;
 security.pam.services.login.enableGnomeKeyring = true;
 security.pam.services.greetd.enableGnomeKeyring = true;
 services.gnome.gnome-keyring.enable = true;
