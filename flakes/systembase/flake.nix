@@ -37,6 +37,11 @@ smartd = { #SMART monitoring for harddrives
       autodetect = true;
     };
 
+security.pam.services.login.enableGnomeKeyring = true;
+security.pam.services.greetd.enableGnomeKeyring = true;
+services.gnome.gnome-keyring.enable = true;
+
+
 hardware.bluetooth.enable = true;
 hardware.bluetooth.powerOnBoot = true;
 services.pipewire.enable = true;
