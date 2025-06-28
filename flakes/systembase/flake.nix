@@ -21,6 +21,7 @@ environment.systemPackages = with pkgs; [
 	lm_sensors
 	unzip
 	kdePackages.kwallet
+	kwalletmanager
 ];
 
 hardware.bluetooth.enable = true;
