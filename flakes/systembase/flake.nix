@@ -28,12 +28,6 @@ environment.systemPackages = with pkgs; [
 #	qttools
 ];
 
-smartd = { #SMART monitoring for harddrives
-      enable = true;
-      autodetect = true;
-    };
-    
-gnome.gnome-keyring.enable = true;
 security.pam.services.login.enableGnomeKeyring = true;
 security.pam.services.greetd.enableGnomeKeyring = true;
 services.gnome.gnome-keyring.enable = true;
