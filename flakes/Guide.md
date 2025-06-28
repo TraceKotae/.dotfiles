@@ -44,7 +44,8 @@ sudo mount -t btrfs -o subvol=var/log /dev/disk/by-partlabel/root /mnt/var/log
 sudo mount -t btrfs -o subvol=swap /dev/disk/by-partlabel/root /mnt/.swapvol
 ```
 6. make sure that the other harddrives are configured correctly. Disko only considers and sets up the system drive. all harddrives that you want automounted need to be defined. See ./systembase/mountdisks.nix for details. If you are just reinstalling you probably just need to change the UUIDs of the Harddrives.
-7. execute the install process
+7. For some ungodly reason go to /systembase/stylix.nix and disable it. Once we have booted we can re-enable it.
+8. execute the install process
 ```
 sudo nixos-install --flake .#nixos
 ```
