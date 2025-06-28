@@ -8,12 +8,12 @@
   ];
 ##Mount Drives
   fileSystems."/mnt/4TBintSSD" = {
-    device = "/dev/disk/by-uuid/9d8cbd20-6618-4034-a628-f6cc969b4aa9"; # Replace with your actual UUID
+    device = "/dev/disk/by-uuid/d5f7e201-3af5-464f-b401-49d2f83ff6e0"; # Replace with your actual UUID
     fsType = "btrfs";
     options = [ "defaults" "compress=zstd"];
   };
   fileSystems."/mnt/4TBextHDD" = {
-    device = "/dev/disk/by-uuid/8958f43b-79a9-48cb-9ca3-38d7cb586c67"; # Replace with your actual UUID
+    device = "/dev/disk/by-uuid/9cde984d-7975-4462-b42b-c75705d0d550"; # Replace with your actual UUID
     fsType = "btrfs";
     options = [ "defaults" "compress=zstd" ];
   };
