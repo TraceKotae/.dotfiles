@@ -3,10 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    disko.url = "github:nix-community/disko/master";
+    disko.url = "github:nix-community/disko/release-25.05";
 	home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-	stylix.url = "github:nix-community/stylix/master";
+	stylix.url = "github:nix-community/stylix";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 	nvidia.url = "path:./nvidia";
 	systembase.url = "path:./systembase";
