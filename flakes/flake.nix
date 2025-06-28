@@ -2,9 +2,9 @@
   description = "Toplevel Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     disko.url = "github:nix-community/disko/master";
-	home-manager.url = "github:nix-community/home-manager/master";
+	home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 	stylix.url = "github:nix-community/stylix/master";
     disko.inputs.nixpkgs.follows = "nixpkgs";

@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }: {
 
+system.stateVersion = "25.05";
+
 #Bootloader
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
