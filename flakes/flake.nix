@@ -1,18 +1,29 @@
 {
   description = "Toplevel Flake";
 
-  inputs = {
+    inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+
     disko.url = "github:nix-community/disko";
-	disko.inputs.nixpkgs.follows = "nixpkgs";
-	home-manager.url = "github:nix-community/home-manager/release-25.05";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-	stylix.url = "github:nix-community/stylix";
-	stylix.inputs.nixpkgs.follows = "nixpkgs";
-	nvidia.url = "path:./nvidia";
-	systembase.url = "path:./systembase";
-	desktopbase.url = "path:./desktopbase";
-	usersoftware.url ="path:./usersoftware";
+
+    stylix.url = "github:nix-community/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nvidia.url = "path:./nvidia";
+    nvidia.inputs.nixpkgs.follows = "nixpkgs";
+
+    systembase.url = "path:./systembase";
+    systembase.inputs.nixpkgs.follows = "nixpkgs";
+
+    desktopbase.url = "path:./desktopbase";
+    desktopbase.inputs.nixpkgs.follows = "nixpkgs";
+
+    usersoftware.url ="path:./usersoftware";
+    usersoftware.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, disko, nvidia, systembase, home-manager, stylix, desktopbase, usersoftware, ... } @ inputs: {
