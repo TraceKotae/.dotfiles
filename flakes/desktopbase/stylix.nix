@@ -2,8 +2,8 @@
 
 {
   ## STYLIX THEMING
-  stylix.enable = false;
-  stylix.autoEnable = false; # Automatically enables most of the below targets
+  stylix.enable = true;
+  stylix.autoEnable = true; # Automatically enables most of the below targets
   stylix.polarity = "dark";
   stylix.image = ./Wallpapers/SakuratreeLarge.png;
   stylix.targets.gnome.enable = false;
