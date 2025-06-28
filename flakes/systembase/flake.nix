@@ -22,6 +22,7 @@ environment.systemPackages = with pkgs; [
 	unzip
 	kdePackages.kwallet
 	kdePackages.kwalletmanager
+	qttools
 ];
 
 hardware.bluetooth.enable = true;
