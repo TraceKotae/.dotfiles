@@ -19,7 +19,8 @@ system.stateVersion = "25.05";
     extraGroups = [ "networkmanager" "wheel" "gamemode" ];
     packages = with pkgs; [];
     };
-
+    
+    
 #Networking
   networking.hostName = "nixos"; # Define your hostname. This is used for more than just the network!
   networking.networkmanager.enable = true;
@@ -52,7 +53,11 @@ system.stateVersion = "25.05";
     variant = "";
   };
   console.keyMap = "de";
-  
+ 
+# Enable flakes
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+
 #Automatically remove old generations
 #  nix.gc = {
 #   automatic = true;
