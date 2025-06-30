@@ -1,9 +1,9 @@
 {
   disko.devices = {
     disk = {
-      nvme1n1 = { # Ensure this is your correct disk (e.g., nvme0n1 or sda)
+      nvme0n1 = { # Ensure this is your correct disk (e.g., nvme0n1 or sda)
         type = "disk";
-        device = "/dev/nvme1n1"; # Ensure this is your correct device path
+        device = "/dev/nvme0n1"; # Ensure this is your correct device path
         content = {
           type = "gpt";
           partitions = {
