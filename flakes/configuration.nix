@@ -30,7 +30,8 @@ system.stateVersion = "25.05";
 
 #Install these Packages
   environment.systemPackages = with pkgs; [
-   git
+  git 
+  git-lfs
    ntfs3g #to read ntfs drives this should also make windows efi show up in grub as bootable options.
    ];
    
