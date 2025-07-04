@@ -17,6 +17,7 @@ outputs = { self, nixpkgs, ... }: {
    unzip
    nextcloud-client
    nextcloud-talk-desktop
+   spotify
 #   lutris
     ];
 
