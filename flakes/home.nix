@@ -7,12 +7,14 @@
   home.packages = with pkgs; [
   ];
 
-  programs.brave.enable = true;
-    
+  programs.brave.enable = true; 
+   
   programs.kitty.enable = true;
   programs.kitty.settings.confirm_os_window_close = 0;
   
   programs.rofi.enable = true;
+  
+  programs.spotify.enable = true;
 
   home.file.".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink ./Assets/Hyprland/hyprland.conf;
   home.file.".config/hypr/UserConfigs/Autostart.conf".source = config.lib.file.mkOutOfStoreSymlink ./Assets/Hyprland/Autostart.conf;
@@ -50,4 +52,5 @@ imports = [
     [General]
     TerminalApplication=kitty
   '';
+  
 }
