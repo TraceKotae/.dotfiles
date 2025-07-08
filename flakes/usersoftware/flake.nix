@@ -18,6 +18,7 @@ outputs = { self, nixpkgs, ... }: {
    nextcloud-client
    nextcloud-talk-desktop
    spotify
+   libreoffice
 #   lutris
     ];
 
