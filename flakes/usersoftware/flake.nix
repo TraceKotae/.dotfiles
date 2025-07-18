@@ -20,6 +20,7 @@ outputs = { self, nixpkgs, ... }: {
    spotify
    libreoffice
 #   lutris
+   tailscale
     ];
 
   programs = {
