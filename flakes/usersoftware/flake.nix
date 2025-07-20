@@ -19,8 +19,8 @@ outputs = { self, nixpkgs, ... }: {
    nextcloud-talk-desktop
    spotify
    libreoffice
+   vlc
 #   lutris
-#   tailscale
     ];
 
   programs = {
