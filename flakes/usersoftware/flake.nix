@@ -21,6 +21,7 @@ outputs = { self, nixpkgs, ... }: {
    libreoffice
    vlc
 #   lutris
+   hyprshot
     ];
 
   programs = {
