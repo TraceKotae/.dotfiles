@@ -34,6 +34,9 @@
         kdePackages.qtsvg # For icons that may be missing
         kdePackages.kio-fuse # For mounting remote locations
         kdePackages.kio-extras # More protocols for kio-fuse
+        kdePackages.ksystemlog
+        kdePackages.haruna
+        kdePackages.kcalc
       ];
     };
   };
