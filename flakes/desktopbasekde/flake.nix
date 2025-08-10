@@ -35,7 +35,7 @@
         kdePackages.kio-fuse # For mounting remote locations
         kdePackages.kio-extras # More protocols for kio-fuse
         kdePackages.ksystemlog
-        kdePackages.haruna
+        #kdePackages.haruna
         kdePackages.kcalc
       ];
     };
