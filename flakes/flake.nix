@@ -21,14 +21,17 @@
 
     desktopbase.url = "path:./desktopbase";
     desktopbase.inputs.nixpkgs.follows = "nixpkgs";
+    
+    desktopbasekde.url = "path:./desktopbasekde";
+    desktopbasekde.inputs.nixpkgs.follows = "nixpkgs";
 
     usersoftware.url ="path:./usersoftware";
     usersoftware.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, disko, nvidia, systembase, home-manager, stylix, desktopbase, usersoftware, ... } @ inputs: {
+  outputs = { self, nixpkgs, disko, nvidia, systembase, home-manager, stylix, desktopbase, desktopbasekde, usersoftware, ... } @ inputs: {
     nixosConfigurations = {
-      "nixos" = nixpkgs.lib.nixosSystem {
+      "nixos-hypr" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
@@ -38,6 +41,22 @@
 		  stylix.nixosModules.stylix
 		  systembase.nixosModules.default
 		  desktopbase.nixosModules.default
+		  usersoftware.nixosModules.default
+		  home-manager.nixosModules.home-manager {
+          home-manager.users.daniel = import ./home.nix;
+          }
+        ];
+      };
+        "nixos-kde" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          ./disks.nix
+          disko.nixosModules.disko
+		  nvidia.nixosModules.default
+		  stylix.nixosModules.stylix
+		  systembase.nixosModules.default
+		  desktopbasekde.nixosModules.default
 		  usersoftware.nixosModules.default
 		  home-manager.nixosModules.home-manager {
           home-manager.users.daniel = import ./home.nix;
