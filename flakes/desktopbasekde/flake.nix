@@ -22,7 +22,7 @@
       # Enable the correct XDG Desktop Portal for KDE
       xdg.portal = {
         enable = true;
-        extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+        extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
       };
 
       # Set environment variables for Wayland
