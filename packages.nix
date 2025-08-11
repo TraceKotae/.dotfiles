@@ -21,6 +21,15 @@
     spotify
     libreoffice
     vlc
+    tailscale
+    wget
+	blueman
+	pavucontrol
+	wireplumber
+	appimage-run
+	lm_sensors
+	unzip
+	grsync
   ];
   programs = {
   steam = {

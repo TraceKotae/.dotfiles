@@ -99,7 +99,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
+  boot.kernelModules = [ "coretemp" "nct6775" ]; #needed for lm-sensors
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
