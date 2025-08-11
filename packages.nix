@@ -1,28 +1,36 @@
+{ config, pkgs, lib, ... }:
+
 {
-description = "Rather safe software that will often need updates";
-
-outputs = { self, nixpkgs, ... }: {
- nixosModules.default = { config, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-   vesktop
-   easyeffects
-#   wineWowPackages.stable
-   mangohud
-   obsidian
-   git
-   gitkraken
-   gedit
-   gparted
-   btrfs-progs
-   unzip
-   nextcloud-client
-   nextcloud-talk-desktop
-   spotify
-   libreoffice
-   vlc
-#   lutris
-    ];
-
+    nano
+    wget
+    git
+    brave
+    vesktop
+    easyeffects
+    mangohud
+    obsidian
+    git
+    gitkraken
+    gedit
+    gparted
+    btrfs-progs
+    unzip
+    nextcloud-client
+    nextcloud-talk-desktop
+    spotify
+    libreoffice
+    vlc
+    tailscale
+    wget
+	blueman
+	pavucontrol
+	wireplumber
+	appimage-run
+	lm_sensors
+	unzip
+	grsync
+  ];
   programs = {
   steam = {
   enable = true;
@@ -33,10 +41,7 @@ outputs = { self, nixpkgs, ... }: {
   gamemode.enable = true;
   coolercontrol.enable = true;
   coolercontrol.nvidiaSupport = true;
- 
+
   };
  services.tailscale.enable = true;
-  };
- };
 }
-
