@@ -29,6 +29,16 @@
 	lm_sensors
 	remmina
   ];
+
+ #   nixpkgs.overlays = [
+ #   (self: super: {
+ #   tailscale = super.tailscale.overrideAttrs (oldAttrs: {
+        # This disables the "check" phase, which runs the tests
+ #       doCheck = false;
+ #     });
+ #   })
+ # ];
+
   programs = {
   steam = {
   enable = true;
