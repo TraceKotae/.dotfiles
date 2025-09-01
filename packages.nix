@@ -4,13 +4,13 @@
   environment.systemPackages = with pkgs; [
     nano
     wget
-    git
     brave
     vesktop
     easyeffects
     mangohud
     obsidian
     git
+    git-lfs
     gitkraken
     gedit
     gparted
@@ -22,14 +22,12 @@
     libreoffice
     vlc
     tailscale
-    wget
 	blueman
 	pavucontrol
 	wireplumber
 	appimage-run
 	lm_sensors
-	unzip
-	grsync
+	remmina
   ];
   programs = {
   steam = {
