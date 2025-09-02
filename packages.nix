@@ -21,7 +21,7 @@
     spotify
     libreoffice
     vlc
-    tailscale
+    #tailscale
 	blueman
 	pavucontrol
 	wireplumber
@@ -30,14 +30,14 @@
 	remmina
   ];
 
- #   nixpkgs.overlays = [
- #   (self: super: {
- #   tailscale = super.tailscale.overrideAttrs (oldAttrs: {
+    nixpkgs.overlays = [
+    (self: super: {
+    tailscale = super.tailscale.overrideAttrs (oldAttrs: {
         # This disables the "check" phase, which runs the tests
- #       doCheck = false;
- #     });
- #   })
- # ];
+        doCheck = false;
+      });
+    })
+  ];
 
   programs = {
   steam = {
